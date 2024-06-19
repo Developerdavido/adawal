@@ -17,6 +17,7 @@ class _AddressDetailScreenState extends State<AddressDetailScreen> {
   AddressProvider? addVm;
 
 
+  bool viewAccountInDollars = true;
   @override
   void initState() {
     // TODO: implement initState
@@ -34,11 +35,15 @@ class _AddressDetailScreenState extends State<AddressDetailScreen> {
             Utils.verticalPadding(space: 0.02.sh),
             Align(
               alignment: Alignment.center,
-              child: topContainer(addVm?.walletAddress),
+              child: topContainer(addVm?.addressModel?.address),
             ),
             Utils.verticalPadding(space: 0.02.sh),
             currentBalance(),
-            adaBalance("\$30,000"),
+            adaBalance(viewAccountInDollars ? "\$${addVm!.amountInDollars}" : "${addVm!.addressAdaTokens}" , onBtnTap: (){
+              setState(() {
+                viewAccountInDollars = !viewAccountInDollars;
+              });
+            }),
             Spacer(),
             Row(
               mainAxisSize: MainAxisSize.min,

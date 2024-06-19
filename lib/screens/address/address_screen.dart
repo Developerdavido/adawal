@@ -49,7 +49,6 @@ class _AddressScreenState extends State<AddressScreen> {
                     onTap: () {
                   if (key.currentState!.validate()) {
                     addVm.fetchSpecificAddressDetails(context);
-                    // Navigator.push(context, MaterialPageRoute(builder: (_)=> const AddressDetailScreen()));
                   }
                 })
               ],
